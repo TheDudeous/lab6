@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Загрузка файла</title>
+    <style>body { font-family: sans-serif; margin: 40px; }</style>
+</head>
+<body>
+    <h1>Загрузка файла на сервер</h1>
+    
+    <!-- Вывод flash-сообщений об успехе или ошибке -->
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul style="color: green;">
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <!-- Важно: enctype="multipart/form-data" обязателен для загрузки файлов -->
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <button type="submit">Загрузить</button>
+    </form>
+</body>
+</html>
